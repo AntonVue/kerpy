@@ -201,8 +201,8 @@ class Kernel(object):
                         fold+=1
                     xvalerr[lmbda_idx,width_idx]=mean(prederr)
                     if verbose:
-                        print(("kerpar:"+str(width)+", regpar:"+str(lmbda)))
-                        print(("    cross-validated loss:"+str(xvalerr[lmbda_idx,width_idx])))
+                        print("kerpar:"+str(width)+", regpar:"+str(lmbda))
+                        print("    cross-validated loss:"+str(xvalerr[lmbda_idx,width_idx]))
                     lmbda_idx+=1
                 width_idx+=1
         min_idx = np.unravel_index(np.argmin(xvalerr),shape(xvalerr))

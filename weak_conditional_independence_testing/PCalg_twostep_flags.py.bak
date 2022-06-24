@@ -33,7 +33,7 @@ Ryz are Gaussian with median Heuristic bandwidth.The regularisation parameters i
 set by default to use grid search. The resulting CPDAG is saved "test_graph_RESIT.pdf".)
 
 '''
-
+from __future__ import print_function
 
 # Remote_running 
 #import matplotlib
@@ -48,12 +48,12 @@ from itertools import combinations, permutations
 import logging
 
 import networkx as nx
-import pickle as pickle
+import cPickle as pickle
 from pickle import load, dump
 
 from kerpy.GaussianKernel import GaussianKernel
 from kerpy.LinearKernel import LinearKernel
-from .TwoStepCondTestObject import TwoStepCondTestObject
+from TwoStepCondTestObject import TwoStepCondTestObject
 from independence_testing.HSICSpectralTestObject import HSICSpectralTestObject
 import numpy as np
 from numpy import arange
@@ -110,7 +110,7 @@ def estimate_skeleton( data_matrix, alpha, **kwargs):
     def method_stable(kwargs):
         return ('method' in kwargs) and kwargs['method'] == "stable"
     
-    node_ids = list(range(data_matrix.shape[1]))
+    node_ids = range(data_matrix.shape[1])
     g = _create_complete_graph(node_ids)
     
     node_size = data_matrix.shape[1]
@@ -463,7 +463,7 @@ def run():#if __name__ == '__main__':
     import networkx as nx
     import pandas as pd
     import matplotlib.pyplot as plt
-    from .SimDataGen import SimDataGen
+    from SimDataGen import SimDataGen
     
     from tools.ProcessingObject import ProcessingObject
     args = ProcessingObject.parse_arguments()
@@ -489,7 +489,7 @@ def run():#if __name__ == '__main__':
     
     datafile = data_filename + ".csv"
     data = np.loadtxt(datafile,delimiter = ',')
-    dm = data[list(range(num_samples)),:][:, list(range(num_var))]
+    dm = data[range(num_samples),:][:, range(num_var)]
     
     
     (g, sep_set) = estimate_skeleton(data_matrix=dm, alpha=0.05,

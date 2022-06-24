@@ -108,4 +108,3 @@ alpha=0.05
 experiment.run_test_trials(numTrials, alpha=alpha)
 
 
-

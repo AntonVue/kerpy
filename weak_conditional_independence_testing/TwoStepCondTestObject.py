@@ -457,9 +457,9 @@ class TwoStepCondTestObject(HSICTestObject):
         '''
         if data_x is None and data_y is None and data_z is None: 
             if not self.streaming and not self.freeze_data:
-                start = time.clock()
+                start = time.perf_counter()
                 self.generate_data(isConditionalTesting=True)
-                data_generating_time = time.clock()-start
+                data_generating_time = time.perf_counter()-start
                 data_x = self.data_x
                 data_y = self.data_y
                 data_z = self.data_z

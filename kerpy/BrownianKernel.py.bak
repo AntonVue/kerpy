@@ -3,7 +3,7 @@ from numpy import shape, reshape
 import numpy as np
 from scipy.spatial.distance import squareform, pdist, cdist
 
-from .Kernel import Kernel
+from Kernel import Kernel
 from tools.GenericTests import GenericTests
 
 

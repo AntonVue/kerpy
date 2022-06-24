@@ -18,12 +18,12 @@ rate = counter/float(numTrials)
 stder = 1.96*sqrt( rate*(1-rate) / float(numTrials) )
 '''this stder is symmetrical in terms of rate'''
 
-print("Parameters:")
-for keys,values in list(param.items()):
+print "Parameters:"
+for keys,values in param.items():
     print(keys)
     print(values)
-print("Rejection rate: %.3f +- %.3f (%d / %d)" % (rate, stder, counter, numTrials))
-print("Average test time: %.5f sec" % average_time) 
+print "Rejection rate: %.3f +- %.3f (%d / %d)" % (rate, stder, counter, numTrials)
+print "Average test time: %.5f sec" % average_time 
 os.chdir('..')
 #Minor: need to change the above for Gaussian Kernel Median Heuristic
 

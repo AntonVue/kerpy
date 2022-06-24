@@ -6,8 +6,6 @@ The p-values will be printed and a data plot will be shown.
 
 '''
 
-#%%
-
 import os, sys
 BASE_DIR = os.path.join( os.path.dirname( __file__ ), '..' )
 sys.path.append(BASE_DIR)
@@ -23,7 +21,7 @@ from pylab import rcParams
 
 from kerpy.GaussianKernel import GaussianKernel
 from kerpy.LinearKernel import LinearKernel
-from .TwoStepCondTestObject import TwoStepCondTestObject
+from TwoStepCondTestObject import TwoStepCondTestObject
 # Import data 
 data = pd.DataFrame.from_csv("WHO_dataset.csv") #WHO_dataset.csv is the same as WHO1 original.csv
 Gross_national_income = np.reshape(data.iloc[:,1],(202,1))
@@ -56,7 +54,7 @@ pvals_RESIT = np.reshape(np.zeros(num_trials),(num_trials,1))
 
 
 # computing Type I error (Null model is true)
-for jj in range(num_trials):
+for jj in xrange(num_trials):
         #print "number of trial:", jj
         
         data_x = np.reshape(np.zeros(num_samples),(num_samples,1))
@@ -87,8 +85,7 @@ for jj in range(num_trials):
                                          K_folds=5, grid_search = True,
                                          GD_optimise=False)
         
-        pvals_KRESIT[jj,], _ = mytestobject.compute_pvalue_with_time_tracking(data_x,data_y,data_z)
-    
+        pvals_KRESIT[jj,], _ = mytestobject.compute_pvalue(data_x,data_y,data_z)
         
         
         # RESIT:
@@ -119,11 +116,11 @@ for jj in range(num_trials):
 
 
 if num_trials > 1:
-    print("Type I error (KRESIT):", np.shape([x for x in pvals_KRESIT if x<0.05])[0]/float(num_trials))
-    print("Type I error (RESIT):", np.shape([x for x in pvals_RESIT if x<0.05])[0]/float(num_trials))
+    print "Type I error (KRESIT):", np.shape(filter(lambda x: x<0.05 ,pvals_KRESIT))[0]/float(num_trials)
+    print "Type I error (RESIT):", np.shape(filter(lambda x: x<0.05 ,pvals_RESIT))[0]/float(num_trials)
 elif num_trials == 1:
-    print("pval our approach:", pvals_KRESIT)
-    print("pval RESIT:", pvals_RESIT)
+    print "pval our approach:", pvals_KRESIT
+    print "pval RESIT:", pvals_RESIT
 
 
 # Plot of the data
@@ -145,4 +142,4 @@ plt.show()
 #plt.show()
 
 
-# %%
+

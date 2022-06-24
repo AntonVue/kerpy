@@ -21,7 +21,7 @@ folders_greps = [x.replace('results/','') for x in sys.argv[1:]]
 which_case = 'alter'
 
 lsdirs = os.listdir('results/')
-print(lsdirs)
+print lsdirs
 figure()
 ax=gca()
 legend_str=list()
@@ -37,13 +37,13 @@ for folders_grep in folders_greps:
             os.chdir('results/'+lsdir)
             load_f = open(load_filename,"r")
             [counter_current, numTrials_current, param,_,_] = load(load_f)
-            print('reading ' + lsdir + ' -found ' + str(numTrials_current) + ' trials')
+            print 'reading ' + lsdir + ' -found ' + str(numTrials_current) + ' trials'
             num_samples.append( param['num_samplesX'] )
             numTrials.append(numTrials_current)
             counter.append(counter_current)
             rate.append( counter[ii]/float(numTrials[ii]) )
             stder.append( 1.96*sqrt( rate[ii]*(1-rate[ii]) / float(numTrials[ii]) ) )
-            print("Rejection rate: %.3f +- %.3f (%d / %d)" % (rate[ii], stder[ii], counter[ii], numTrials[ii]))
+            print "Rejection rate: %.3f +- %.3f (%d / %d)" % (rate[ii], stder[ii], counter[ii], numTrials[ii])
             os.chdir('../..')
             ii+=1
     #stat_test sizes may not be ordered

@@ -15,7 +15,8 @@ class ProcessingObject(object):
     def parse_arguments():
         parser = argparse.ArgumentParser()
         parser.add_argument("num_samples", type=int,\
-                            help="total # of samples")
+                            help="total # of samples",
+                            default=False)
         parser.add_argument("--num_rfx", type=int,\
                             help="number of random features of the data X",
                             default=30)
