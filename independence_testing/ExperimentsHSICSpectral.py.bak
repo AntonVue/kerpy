@@ -9,10 +9,10 @@ sys.path.append(BASE_DIR)
 
 from kerpy.GaussianKernel import GaussianKernel
 from kerpy.BrownianKernel import BrownianKernel
-from .HSICTestObject import HSICTestObject
-from .HSICSpectralTestObject import HSICSpectralTestObject
-from .TestExperiment import TestExperiment
-from .SimDataGen import SimDataGen
+from HSICTestObject import HSICTestObject
+from HSICSpectralTestObject import HSICSpectralTestObject
+from TestExperiment import TestExperiment
+from SimDataGen import SimDataGen
 from tools.ProcessingObject import ProcessingObject
 
 #example usage: python ExperimentsHSICSpectral.py 500 --dimX 4 --hypothesis null --rff --num_rfx 50 --num_rfy 50 

@@ -6,10 +6,10 @@ BASE_DIR = os.path.join( os.path.dirname( __file__ ), '..' )
 sys.path.append(BASE_DIR)
 
 from kerpy.GaussianKernel import GaussianKernel
-from .HSICTestObject import HSICTestObject
-from .HSICBlockTestObject import HSICBlockTestObject
-from .TestExperiment import TestExperiment
-from .SimDataGen import SimDataGen
+from HSICTestObject import HSICTestObject
+from HSICBlockTestObject import HSICBlockTestObject
+from TestExperiment import TestExperiment
+from SimDataGen import SimDataGen
 from tools.ProcessingObject import ProcessingObject
 
 #example use: python ExperimentsHSICBlock.py 500 --dimX 3 --kernelX_use_median --kernelY_use_median --blocksize 10

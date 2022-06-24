@@ -1,5 +1,5 @@
-from .TestObject import TestObject
-from .HSICTestObject import HSICTestObject
+from TestObject import TestObject
+from HSICTestObject import HSICTestObject
 from numpy import mean, sum, zeros, var, sqrt
 from scipy.stats import norm
 import time

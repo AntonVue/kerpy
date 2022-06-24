@@ -39,25 +39,25 @@ class TestExperiment(object):
             load_f = open(save_filename,"r")
             [counter_init, completedTrials, _, average_time_init,pvalues_init] = load(load_f)
             load_f.close()
-            print("Found %d completed trials" % completedTrials)
+            print "Found %d completed trials" % completedTrials
             if completedTrials >= numTrials:
-                print("Exiting")
+                print "Exiting"
                 return 0
             else:
-                print("Continuing")
+                print "Continuing"
         counter = counter_init
         pvalues = pvalues_init
         times_passed=zeros(numTrials-completedTrials)
         for trial in arange(completedTrials,numTrials):
-            start=time.perf_counter()
-            print("Trial %d" % trial)
+            start=time.clock()
+            print "Trial %d" % trial
             pvalue, data_generating_time = self.compute_pvalue_with_time_tracking()
             counter += pvalue<alpha
             pvalues.append(pvalue)
-            time_passed = time.perf_counter()-start-data_generating_time
+            time_passed = time.clock()-start-data_generating_time
             times_passed[trial-completedTrials]=time_passed
-            print('p-value: ',pvalue)
-            print('testing time passed: ', time_passed)
+            print 'p-value: ',pvalue
+            print 'testing time passed: ', time_passed
             #save results every 50 trials
             if not (trial+1)%5 or trial+1==numTrials:
                     save_f = open(save_filename,"w")
@@ -65,9 +65,9 @@ class TestExperiment(object):
                                 average_time_init*float(completedTrials)/(trial+1)
                     dump([counter, trial+1, self.param, average_time, pvalues], save_f)
                     save_f.close()
-                    print("...Dumped into file")
-                    print("Rejection rate: %d / %d" % (counter, trial+1))
-                    print("Average time: ", average_time)
+                    print "...Dumped into file"
+                    print "Rejection rate: %d / %d" % (counter, trial+1)
+                    print "Average time: ", average_time
         return 0
         
 '''We are directly calculating the power if under alternative;

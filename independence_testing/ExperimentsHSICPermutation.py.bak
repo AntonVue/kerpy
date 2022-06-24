@@ -6,11 +6,11 @@ BASE_DIR = os.path.join( os.path.dirname( __file__ ), '..' )
 sys.path.append(BASE_DIR)
 
 from kerpy.GaussianKernel import GaussianKernel
-from .HSICTestObject import HSICTestObject
-from .TestExperiment import TestExperiment
-from .SimDataGen import SimDataGen
+from HSICTestObject import HSICTestObject
+from TestExperiment import TestExperiment
+from SimDataGen import SimDataGen
 from tools.ProcessingObject import ProcessingObject
-from .HSICPermutationTestObject import HSICPermutationTestObject
+from HSICPermutationTestObject import HSICPermutationTestObject
 
 #example use: python ExperimentsHSICPermutation.py 500 --dimX 3 --hypothesis null --rff --num_rfx 50 --num_rfy 50 
 

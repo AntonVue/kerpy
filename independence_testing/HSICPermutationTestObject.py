@@ -3,7 +3,7 @@ Created on 17 Nov 2015
 
 @author: qinyi
 '''
-from HSICTestObject import HSICTestObject
+from .HSICTestObject import HSICTestObject
 import time
 
 
@@ -32,7 +32,7 @@ class HSICPermutationTestObject(HSICTestObject):
                 data_generating_time = 0.
         else:
             data_generating_time = 0.
-        print 'Permutation data generating time passed: ', data_generating_time
+        print('Permutation data generating time passed: ', data_generating_time)
         hsic_statistic, null_samples, _, _, _, _, _ = self.HSICmethod(unbiased=self.unbiased,num_shuffles=self.num_shuffles,
                                                                       data_x = data_x, data_y = data_y)
         pvalue = ( 1 + sum( null_samples > hsic_statistic ) ) / float( 1 + self.num_shuffles )

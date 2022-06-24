@@ -1,4 +1,4 @@
-from .HSICTestObject import HSICTestObject
+from HSICTestObject import HSICTestObject
 from numpy import zeros
 import time
 from numpy.random import permutation

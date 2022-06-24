@@ -19,7 +19,7 @@ class SimDataGen(object):
         Zmean = zeros(dd+1)
         Zcov = identity(dd+1)
         Z = multivariate_normal(Zmean, Zcov, num_samples)
-        first_term = sqrt(2./dimension)*sum(sign(data_x[:,arange(0,dimension,2)]* data_x[:,arange(1,dimension,2)])*abs(Z[:,list(range(dd))]),axis=1,keepdims=True)
+        first_term = sqrt(2./dimension)*sum(sign(data_x[:,arange(0,dimension,2)]* data_x[:,arange(1,dimension,2)])*abs(Z[:,range(dd)]),axis=1,keepdims=True)
         second_term = Z[:,[dd]] #take the last dimension of Z 
         data_y = first_term + second_term
         return data_x, data_y
